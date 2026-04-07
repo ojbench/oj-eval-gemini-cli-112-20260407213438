@@ -1,6 +1,3 @@
-#ifndef SRC_HPP
-#define SRC_HPP
-
 #include <string>
 #include <cstring>
 #include <vector>
@@ -150,5 +147,3 @@ namespace final {
         }
     };
 }
-
-#endif // SRC_HPP
