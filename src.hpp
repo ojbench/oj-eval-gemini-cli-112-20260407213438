@@ -41,15 +41,12 @@ namespace final {
             }
             
             _argc = args.size();
-            if (_argc > 0) {
-                _argv = new char*[_argc];
-                for (int i = 0; i < _argc; ++i) {
-                    _argv[i] = new char[args[i].length() + 1];
-                    strcpy(_argv[i], args[i].c_str());
-                }
-            } else {
-                _argv = nullptr;
+            _argv = new char*[_argc + 1];
+            for (int i = 0; i < _argc; ++i) {
+                _argv[i] = new char[args[i].length() + 1];
+                strcpy(_argv[i], args[i].c_str());
             }
+            _argv[_argc] = nullptr;
         }
         
         ~arguments() {
@@ -65,15 +62,12 @@ namespace final {
 
         arguments(const arguments& other) {
             _argc = other._argc;
-            if (_argc > 0) {
-                _argv = new char*[_argc];
-                for (int i = 0; i < _argc; ++i) {
-                    _argv[i] = new char[strlen(other._argv[i]) + 1];
-                    strcpy(_argv[i], other._argv[i]);
-                }
-            } else {
-                _argv = nullptr;
+            _argv = new char*[_argc + 1];
+            for (int i = 0; i < _argc; ++i) {
+                _argv[i] = new char[strlen(other._argv[i]) + 1];
+                strcpy(_argv[i], other._argv[i]);
             }
+            _argv[_argc] = nullptr;
         }
 
         arguments& operator=(const arguments& other) {
@@ -85,15 +79,12 @@ namespace final {
                 delete[] _argv;
             }
             _argc = other._argc;
-            if (_argc > 0) {
-                _argv = new char*[_argc];
-                for (int i = 0; i < _argc; ++i) {
-                    _argv[i] = new char[strlen(other._argv[i]) + 1];
-                    strcpy(_argv[i], other._argv[i]);
-                }
-            } else {
-                _argv = nullptr;
+            _argv = new char*[_argc + 1];
+            for (int i = 0; i < _argc; ++i) {
+                _argv[i] = new char[strlen(other._argv[i]) + 1];
+                strcpy(_argv[i], other._argv[i]);
             }
+            _argv[_argc] = nullptr;
             return *this;
         }
 
